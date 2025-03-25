@@ -1,0 +1,35 @@
+<div class="form-container">
+  <button class="back-btn" (click)="goToList()">⬅ Back to Address Book</button>
+  <h2>{{ isEditMode ? 'Edit Person' : 'Add New Person' }}</h2>
+
+  <form (ngSubmit)="savePerson()">
+    <div class="input-group">
+      <label>Full Name</label>
+      <input type="text" [(ngModel)]="person.name" name="name" required />
+      <p class="error" *ngIf="errors.name">❌ {{ errors.name }}</p>
+    </div>
+
+    <div class="input-group">
+      <label>City</label>
+      <input type="text" [(ngModel)]="person.city" name="city" required />
+      <p class="error" *ngIf="errors.city">❌ {{ errors.city }}</p>
+    </div>
+
+    <div class="input-group">
+      <label>Phone</label>
+      <input type="text" [(ngModel)]="person.phone" name="phone" required />
+      <p class="error" *ngIf="errors.phone">❌ {{ errors.phone }}</p>
+    </div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="person.email" name="email" required />
+      <p class="error" *ngIf="errors.email">❌ {{ errors.email }}</p>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="add">{{ isEditMode ? 'Update' : 'Submit' }}</button>
+      <button type="button" class="reset" (click)="goToList()">Cancel</button>
+    </div>
+  </form>
+</div>
